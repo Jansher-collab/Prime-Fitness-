@@ -34,7 +34,13 @@ h1,h2,h3,h4,h5 { font-weight: 800; letter-spacing:1px; color:#97d925; }
 /* Dropdown */
 .navbar-dark .dropdown-menu { background-color: #111; }
 .navbar-dark .dropdown-item { color: #fff; transition:0.3s; }
-.navbar-dark .dropdown-item:hover { color:#000; background-color:#97d925; }
+.navbar-dark .dropdown-item:hover {   background-color: rgba(125, 189, 15, 0.2);
+  color: #97d925 !important; }
+  /* Hover open dropdown */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  opacity: 1;
+}
 
 /* Buttons */
 .btn-animated {
@@ -128,18 +134,18 @@ h1,h2,h3,h4,h5 { font-weight: 800; letter-spacing:1px; color:#97d925; }
 }
 
 /* Footer */
-footer { background:#111; color:#fff; padding:40px 15px 20px; }
+footer { background:#111; color: white; padding:40px 15px 20px; }
 footer h5 { color:#97d925; margin-bottom:15px; font-size:1.1rem; font-weight:700; }
-footer .nav-link { color:#ccc; transition:0.3s; font-size:0.95rem; padding:4px 0; }
+footer .nav-link { color: white; transition:0.3s; font-size:0.95rem; padding:4px 0; }
 footer .nav-link:hover { color:#97d925; }
 footer .footer-logo { width:50px; height:50px; }
 .footer-title { font-weight:700; font-size:1.2rem; color:#97d925; margin-left:10px; }
-.footer-tagline { font-size:0.9rem; color:#bbb; line-height:1.4; }
+.footer-tagline { font-size:0.9rem; color: white; line-height:1.4; }
 .footer-tagline span { display:block; }
 
 /* Social Icons */
 .social-icons { display:flex; gap:15px; flex-wrap:wrap; }
-.social-icons a { color:#fff; transition:0.3s; }
+.social-icons a { color: white; transition:0.3s; }
 .social-icons a:hover { color:#97d925; }
 
 /* Footer Layout Responsive */
@@ -155,7 +161,7 @@ footer .footer-logo { width:50px; height:50px; }
 @media(min-width:992px){
   footer .row { display:grid; grid-template-columns:repeat(5,1fr); gap:30px; text-align:left; }
 }
-.footer-bottom { text-align:center; padding-top:15px; font-size:0.85rem; color:#aaa; border-top:1px solid #333; margin-top:15px; }
+.footer-bottom { text-align:center; padding-top:15px; font-size:0.85rem; color: white; border-top:1px solid #333; margin-top:15px; }
 
 </style>
 </head>

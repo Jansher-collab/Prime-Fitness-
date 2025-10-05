@@ -50,24 +50,55 @@
       overflow-x: hidden;
     }
 
-    /* Other page CSS ... */
+    /* Navbar */
+.navbar-brand {
+  color: #97d925 !important;
+  font-size: 1.6rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.navbar-brand img {
+  max-width: 40px;
+  height: auto;
+}
+.navbar-nav .nav-link {
+  color: #fff !important;
+  transition: 0.3s;
+}
+.navbar-nav .nav-link:hover,
+.nav-link.active {
+  color: #97d925 !important;
+}
+.navbar {
+  flex-wrap: wrap;
+}
 
-    /* Dark Dropdown Styling for all pages */
-    .dropdown-menu {
-      background-color: #111 !important;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
+/* Dropdown */
+.navbar-dark .dropdown-menu {
+  background-color: #111 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: none; /* hidden by default */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.navbar-dark .dropdown-item {
+  color: #fff !important;
+  padding: 8px 15px;
+  display: block;
+}
+.navbar-dark .dropdown-item:hover {
+  background-color: rgba(125, 189, 15, 0.2);
+  color: #97d925 !important;
+}
 
-    .dropdown-menu .nav-link {
-      color: #fff !important;
-      padding: 8px 15px;
-      display: block;
-    }
-
-    .dropdown-menu .nav-link:hover {
-      background-color: rgba(125, 189, 15, 0.2);
-      color: rgb(151, 217, 37) !important;
-    }
+/* Hover open dropdown */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  opacity: 1;
+}
 
     /* Glowing effect */
     h1.glow-text {
@@ -190,69 +221,136 @@
     }
 
     /* Footer */
-    footer {
-      background: #0f0f0f;
-      border-top: 1px solid #1d1d1d;
-    }
+footer {
+  background: #111;
+  color: white;
+  padding: 40px 15px 20px;
+}
+footer h5 {
+  color: #97d925;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+footer .nav-link {
+  color: white;
+  transition: 0.3s;
+  font-size: 0.95rem;
+  padding: 4px 0;
+}
+footer .nav-link:hover {
+  color: #97d925;
+}
+footer .footer-logo {
+  width: 50px;
+  height: 50px;
+}
+.footer-title {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #97d925;
+  margin-left: 10px;
+}
+.footer-tagline {
+  font-size: 0.9rem;
+  color: white;
+  line-height: 1.4;
+}
+.footer-tagline span {
+  display: block;
+}
 
-    footer a {
-      color: #fff;
-      text-decoration: none;
-    }
+/* Social Icons */
+.social-icons a {
+  color: white;
+  transition: 0.3s;
+}
+.social-icons a:hover {
+  color: #97d925;
+}
 
-    footer a:hover {
-      color: var(--prime);
-      text-decoration: underline;
-    }
-
-    /* Small utility */
-    .muted {
-      color: #bdbdbd;
-    }
+/* Footer Layout Responsive */
+@media (max-width: 320px) {
+  footer .row {
+    display: block;
+    text-align: center;
+  }
+}
+@media (min-width: 321px) and (max-width: 991px) {
+  footer .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    text-align: center;
+  }
+}
+@media (min-width: 992px) {
+  footer .row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+    text-align: left;
+  }
+}
+.footer-bottom {
+  text-align: center;
+  padding-top: 15px;
+  font-size: 0.85rem;
+  color: white;
+  border-top: 1px solid #333;
+  margin-top: 15px;
+}
   </style>
 </head>
 
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" data-aos="fade-down">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="assets/prime logo-1.png" alt="Prime Fitness Logo" width="50"
-          height="50"></a>
-      <a class="navbar-brand display-4 fw-bold" href="#" style="color: rgb(151, 217, 37); font-size: 25px;">Prime
-        Fitness</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link  dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Facilities</a>
-            <ul class="dropdown-menu">
-              <li><a class="nav-link" href="cycling.html">Cycling</a></li>
-              <li><a class="nav-link" href="swimming.html">Swimming</a></li>
-              <li><a class="nav-link" href="sports.html">Sports & Fitness</a></li>
-              <li><a class="nav-link" href="group.html">Group Exercises</a></li>
-              <li><a class="nav-link" href="equipments.html">Gym Equipments</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">About</a>
-            <ul class="dropdown-menu">
-              <li><a class="nav-link" href="faqs.html">FAQ’s</a></li>
-              <li><a class="nav-link" href="contact.html">Enquiry Form</a></li>
-              <li><a class="nav-link link active" href="#">Site Map</a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="membership.html">Membership</a></li>
-          <li class="nav-item"><a class="nav-link" href="salon.html">Salon & Spa</a></li>
-          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-        </ul>
-      </div>
+ <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container-fluid px-3">
+    <a class="navbar-brand" href="#">
+      <img src="assets/prime logo-1.png" alt="Logo" />
+      <span>Prime Fitness</span>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Facilities</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="cycling.html">Cycling</a></li>
+            <li><a class="dropdown-item" href="swimming.html">Swimming</a></li>
+            <li><a class="dropdown-item" href="sports.html">Sports & Fitness</a></li>
+            <li><a class="dropdown-item" href="group.html">Group Exercises</a></li>
+            <li><a class="dropdown-item" href="equipments.html">Gym Equipments</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown">About</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="faqs.html">FAQ’s</a></li>
+            <li><a class="dropdown-item" href="contact.html">Enquiry Form</a></li>
+            <li><a class="dropdown-item" href="#">Site Map</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="membership.html">Membership</a></li>
+        <li class="nav-item"><a class="nav-link" href="salon.html">Salon & Spa</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <!-- Site Map Section -->
   <section id="sitemap">
@@ -346,59 +444,63 @@
   </section>
 
 <!-- Footer -->
-<footer class="container-fluid text-white mt-5" style="background-color: #000;" data-aos="fade-up">
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 py-4 border-top">
-    <div class="col d-flex flex-column mb-3 mb-lg-0" data-aos="fade-right">
-      <div class="d-flex align-items-center mb-2">
-        <img src="assets/prime logo-1.png" alt="Prime Fitness Logo" width="60" height="60" class="me-2 img-fluid">
-        <p class="mb-0 text-white">Prime Fitness Club 2025 © All rights reserved</p>
+<footer class="container-fluid mt-5">
+  <div class="container">
+    <div class="row text-white">
+      <!-- Logo & tagline -->
+      <div>
+        <div class="d-flex align-items-center">
+          <img src="assets/prime logo-1.png" alt="Logo" class="footer-logo me-2"/>
+          <span class="footer-title">Prime Fitness</span>
+        </div>
+        <p class="footer-tagline">
+          <span>Empowering healthier lives</span><span>since 1982.</span>
+        </p>
       </div>
-      <!-- Social Media Icons centered below logo -->
-      <div class="d-flex justify-content-center mt-3">
-        <a href="https://www.facebook.com/share/1FRNyacGdV/" target="_blank" class="text-white fs-4 me-3">
-          <i class="bi bi-facebook"></i>
-        </a>
-        <a href="https://www.instagram.com/primefitnesspakistan?igsh=bmpxN3R3dzRsYmg=" target="_blank" class="text-white fs-4 me-3">
-          <i class="bi bi-instagram"></i>
-        </a>
-        <a href="https://www.youtube.com/c/PrimeFitnessusa" target="_blank" class="text-white fs-4">
-          <i class="bi bi-youtube"></i>
-        </a>
+      <!-- Explore -->
+      <div>
+        <h5>Explore</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="index.html#about" class="nav-link">About Us</a></li>
+          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+        </ul>
+      </div>
+      <!-- Facilities -->
+      <div>
+        <h5>Facilities</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item"><a href="cycling.html" class="nav-link">Cycling</a></li>
+          <li class="nav-item"><a href="swimming.html" class="nav-link">Swimming</a></li>
+          <li class="nav-item"><a href="sports.html" class="nav-link">Sports & Fitness</a></li>
+          <li class="nav-item"><a href="equipments.html" class="nav-link">Gym Equipments</a></li>
+          <li class="nav-item"><a href="group.html" class="nav-link">Group Exercises</a></li>
+        </ul>
+      </div>
+      <!-- Quick Links -->
+      <div>
+        <h5>Quick Links</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item"><a href="membership.html" class="nav-link">Membership</a></li>
+          <li class="nav-item"><a href="salon.html" class="nav-link">Salon & Spa</a></li>
+          <li class="nav-item"><a href="faqs.html" class="nav-link">FAQ's</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Site Map</a></li>
+        </ul>
+      </div>
+      <!-- Follow Us -->
+      <div>
+        <h5>Follow Us</h5>
+        <p class="small text-white">Stay connected and join our fitness community online.</p>
+        <div class="d-flex social-icons">
+          <a href="https://www.facebook.com/share/1FRNyacGdV/" class="fs-4 me-3"><i class="bi bi-facebook"></i></a>
+          <a href="https://www.instagram.com/primefitnesspakistan?igsh=bmpxN3R3dzRsYmg=" class="fs-4 me-3"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.youtube.com/c/PrimeFitnessusa" class="fs-4"><i class="bi bi-youtube"></i></a>
+        </div>
       </div>
     </div>
-
-    <div class="col"></div>
-
-    <div class="col" data-aos="fade-up" data-aos-delay="100">
-      <h5 style="color: rgb(125, 189, 15);">Explore</h5>
-      <ul class="nav flex-column">
-        <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-white">Home</a></li>
-        <li class="nav-item mb-2"><a href="index.html#about" class="nav-link p-0 text-white">About Us</a></li>
-        <li class="nav-item mb-2"><a href="cycling.html" class="nav-link p-0 text-white">Cycling</a></li>
-        <li class="nav-item mb-2"><a href="swimming.html" class="nav-link p-0 text-white">Swimming</a></li>
-        <li class="nav-item mb-2"><a href="sports.html" class="nav-link p-0 text-white">Sports & Fitness</a></li>
-      </ul>
-    </div>
-
-    <div class="col" data-aos="fade-up" data-aos-delay="200">
-      <h5 style="color: rgb(125, 189, 15);">Quick Links</h5>
-      <ul class="nav flex-column">
-        <li class="nav-item mb-2"><a href="group.html" class="nav-link p-0 text-white">Group Exercises</a></li>
-        <li class="nav-item mb-2"><a href="equipments.html" class="nav-link p-0 text-white">Gym Equipments</a></li>
-        <li class="nav-item mb-2"><a href="faqs.html" class="nav-link p-0 text-white">FAQ's</a></li>
-        <li class="nav-item mb-2"><a href="contact.html" class="nav-link p-0 text-white">Enquiry Form</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Site Map</a></li>
-      </ul>
-    </div>
-
-    <div class="col" data-aos="fade-up" data-aos-delay="300">
-      <h5 style="color: rgb(125, 189, 15);">More</h5>
-      <ul class="nav flex-column">
-        <li class="nav-item mb-2"><a href="membership.html" class="nav-link p-0 text-white">Membership</a></li>
-        <li class="nav-item mb-2"><a href="salon.html" class="nav-link p-0 text-white">Salon & Spa</a></li>
-        <li class="nav-item mb-2"><a href="gallery.html" class="nav-link p-0 text-white">Gallery</a></li>
-        <li class="nav-item mb-2"><a href="contact.html" class="nav-link p-0 text-white">Contact Us</a></li>
-      </ul>
+    <div class="footer-bottom">
+      © 2025 Prime Fitness Club — All rights reserved
     </div>
   </div>
 </footer>

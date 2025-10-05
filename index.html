@@ -1,358 +1,320 @@
-<!DOCTYPE html>
+<!doctype html> 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Prime Fitness Club</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-    />
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prime Fitness Club</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
-  <style>
-    body { 
-      background-color: #000; 
-      color: #fff; 
-      overflow-x: hidden;
-      animation: fadeInBody 1.5s ease-in;
-    }
-    @keyframes fadeInBody { from {opacity: 0;} to {opacity: 1;} }
+<style>
+body { 
+  background-color: #000; 
+  color: #fff; 
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+h1,h2,h3,h4,h5 { font-weight: 800; letter-spacing:1px; color:#97d925; }
 
-    h1, h2 { 
-      color: rgb(125,189,15); 
-      letter-spacing: 1px; 
-      font-weight: 800;
-    }
+/* Navbar */
+.navbar-brand { 
+  color:#97d925 !important; 
+  font-size:1.6rem; 
+  font-weight:700; 
+  display:flex; 
+  align-items:center; 
+  gap:6px;
+  white-space:nowrap;
+}
+.navbar-brand img { max-width:40px; height:auto; }
+.navbar-nav .nav-link { color:#fff !important; transition:0.3s; }
+.navbar-nav .nav-link:hover, .nav-link.active { color:#97d925 !important; }
+.navbar { flex-wrap:wrap; }
 
-    /* Glowing effect */
-    h1.glow-text {
-      color: rgb(125, 189, 15);
-      text-align: center;
-      font-size: 2.5rem;
-      font-weight: bold;
-      text-shadow: 0 0 1px rgba(125, 189, 15, 0.8),
-        0 0 10px rgba(125, 189, 15, 0.6),
-        0 0 20px rgba(125, 189, 15, 0.4);
-      margin-bottom: 40px;
-    }
+/* Dropdown */
+.navbar-dark .dropdown-menu { background-color: #111; }
+.navbar-dark .dropdown-item { color: #fff; transition:0.3s; }
+.navbar-dark .dropdown-item:hover { color:#000; background-color:#97d925; }
 
-    hr { 
-      background: rgb(125,189,15); 
-      border-radius: 10px; 
-      height: 4px; 
-      width: 100px; 
-      margin: 15px auto 25px; 
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3); 
-    }
+/* Buttons */
+.btn-animated {
+  background: linear-gradient(135deg,#7dbd0f,#97d925);
+  color:#fff;
+  border-radius:50px;
+  padding:12px 28px;
+  font-weight:600;
+  box-shadow:0 4px 12px rgba(125,189,15,0.4);
+  transition: all 0.3s ease-in-out;
+}
+.btn-animated:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow:0 6px 16px rgba(125,189,15,0.6);
+  background: linear-gradient(135deg,#97d925,#7dbd0f);
+  color:#000;
+}
 
-    .btn-animated {
-      background-color: rgb(125,189,15); 
-      color: #fff; 
-      border-radius: 30px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.3); 
-      transition: all 0.3s ease-in-out;
-    }
-    .btn-animated:hover { 
-      transform: scale(1.1) rotate(-1deg); 
-      box-shadow: 0 6px 15px rgba(125,189,15,0.7);
-    }
+/* Carousel */
+.carousel-item img { width:100%; height:100vh; object-fit:cover; }
+.carousel-caption {
+  position: absolute;
+  inset: 0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding: 1rem;
+  background: rgba(0,0,0,0.35);
+}
+.carousel-caption h1 { font-size: clamp(1.2rem, 4vw, 3.5rem); font-weight: 900; margin-bottom: 0.5rem; color:#97d925; }
+.carousel-caption p { font-size: clamp(0.8rem, 2vw, 1.3rem); margin-bottom: 1rem; color:#fff; }
 
-    .img-hover {
-      transition: transform 0.6s ease, box-shadow 0.6s ease;
-    }
-    .img-hover:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 30px rgba(125,189,15,0.5);
-    }
+/* Responsive Carousel Heights */
+@media(max-width:992px){ .carousel-item img{height:80vh;} }
+@media(max-width:768px){ 
+  .carousel-item img{height:65vh;}
+  .carousel-caption{padding: 1.2rem;}
+}
+@media(max-width:576px){ 
+  .carousel-item img{height:55vh;}
+  .carousel-caption{padding: 0.8rem;}
+  .btn-animated{padding:6px 14px; font-size:0.8rem;}
+}
 
-    /* Carousel overlay text styling */
-    .carousel-caption { 
-      background: rgba(0,0,0,0.4); 
-      padding: 20px; 
-      border-radius: 15px; 
-    }
+/* Extra Small <320px */
+@media(max-width:319px){
+  .navbar-brand { font-size:1.1rem; }
+  .navbar-brand img { max-width:28px; }
+  .btn-animated { padding:4px 10px; font-size:0.7rem; }
+  .carousel-caption h1 { font-size:1rem; }
+  .carousel-caption p { font-size:0.75rem; }
+  footer h5 { font-size:1rem; }
+  .footer-logo { width:35px; height:35px; }
+  .footer-title { font-size:1rem; }
+  .social-icons a { font-size:1.1rem !important; }
+}
 
-    @media (max-width: 375px) {
-      .carousel-item,
-      .carousel-item img {
-        height: 250px !important;
-      }
-    }
-    @media (max-width: 576px) {
-      h1.glow-text { font-size: 1.8rem; }
-      .carousel-item, .carousel-item img { height: 300px !important; }
-    }
+/* Super small 250px–320px fix for social icons */
+@media(max-width:320px){
+  footer .social-icons { justify-content:center !important; margin-top:10px; }
+}
 
-    .dropdown-menu {
-      background-color: #111 !important;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    .dropdown-menu .nav-link {
-      color: #fff !important;
-      padding: 8px 15px;
-      display: block;
-    }
-    .dropdown-menu .nav-link:hover {
-      background-color: rgba(125,189,15,0.2);
-      color: rgb(151,217,37) !important;
-    }
+/* Modern About Us */
+.about-section {
+  background: #111;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+.about-img { background-size: cover; background-position: center; width: 100%; min-height: 280px; }
+.about-content { padding: 30px; display:flex; flex-direction:column; justify-content:center; }
+.about-content h2 { color:#97d925; font-size:2rem; margin-bottom:20px; }
+.about-content p { color:#ddd; line-height:1.6; }
+.about-icons { display:flex; gap:20px; margin-top:20px; flex-wrap:wrap; justify-content:center; }
+.about-icons div { text-align:center; flex:1 1 80px; }
+.about-icons i { font-size:2rem; color:#97d925; margin-bottom:8px; }
 
-    footer {
-      background: #111;
-      padding: 40px 0;
-      margin-top: 50px;
-    }
-    footer h5 {
-      color: rgb(125,189,15);
-      font-weight: 600;
-      margin-bottom: 15px;
-    }
-    footer .nav-link {
-      color: white !important;
-      transition: color 0.3s ease;
-    }
-    footer .nav-link:hover {
-      color: rgb(125,189,15) !important;
-    }
-  </style>
+/* Responsive Fixes */
+@media(max-width:575px){
+  .about-section { display:block; }
+  .about-img { min-height:220px; border-bottom:3px solid #97d925; }
+  .about-content { padding:20px; text-align:center; }
+  .about-content h2 { font-size:1.5rem; }
+  .about-content p { font-size:0.9rem; }
+}
+@media(min-width:576px){
+  .about-section { display:flex; align-items:stretch; }
+  .about-img, .about-content { flex:1; }
+}
+
+/* Footer */
+footer { background:#111; color:#fff; padding:40px 15px 20px; }
+footer h5 { color:#97d925; margin-bottom:15px; font-size:1.1rem; font-weight:700; }
+footer .nav-link { color:#ccc; transition:0.3s; font-size:0.95rem; padding:4px 0; }
+footer .nav-link:hover { color:#97d925; }
+footer .footer-logo { width:50px; height:50px; }
+.footer-title { font-weight:700; font-size:1.2rem; color:#97d925; margin-left:10px; }
+.footer-tagline { font-size:0.9rem; color:#bbb; line-height:1.4; }
+.footer-tagline span { display:block; }
+
+/* Social Icons */
+.social-icons { display:flex; gap:15px; flex-wrap:wrap; }
+.social-icons a { color:#fff; transition:0.3s; }
+.social-icons a:hover { color:#97d925; }
+
+/* Footer Layout Responsive */
+@media(max-width:320px){ 
+  footer .row { display:block; text-align:center; }
+  footer .social-icons { justify-content:center !important; margin-top:10px; }
+}
+@media(min-width:321px) and (max-width:991px){
+  footer .row { display:grid; grid-template-columns:1fr 1fr; gap:20px; text-align:center; }
+  footer .social-icons { justify-content:center !important; margin-top:10px; }
+  footer > .container .row > div:last-child { text-align:center; }
+}
+@media(min-width:992px){
+  footer .row { display:grid; grid-template-columns:repeat(5,1fr); gap:30px; text-align:left; }
+}
+.footer-bottom { text-align:center; padding-top:15px; font-size:0.85rem; color:#aaa; border-top:1px solid #333; margin-top:15px; }
+
+</style>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="assets/prime logo-1.png" alt="Prime Fitness Logo" width="50" height="50"></a>
-      <a class="navbar-brand display-4 fw-bold" href="#" style="color: rgb(151, 217, 37); font-size: 25px;">Prime Fitness</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Facilities</a>
-            <ul class="dropdown-menu">
-              <li><a class="nav-link" href="cycling.html">Cycling</a></li>
-              <li><a class="nav-link" href="swimming.html">Swimming</a></li>
-              <li><a class="nav-link" href="sports.html">Sports & Fitness</a></li>
-              <li><a class="nav-link" href="group.html">Group Exercises</a></li>
-              <li><a class="nav-link" href="equipments.html">Gym Equipments</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">About</a>
-            <ul class="dropdown-menu">
-              <li><a class="nav-link" href="faqs.html">FAQ’s</a></li>
-              <li><a class="nav-link" href="contact.html">Enquiry Form</a></li>
-              <li><a class="nav-link" href="site-map.html">Site Map</a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="membership.html">Membership</a></li>
-          <li class="nav-item"><a class="nav-link" href="salon.html">Salon & Spa</a></li>
-          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container-fluid px-3">
+    <a class="navbar-brand" href="#">
+      <img src="assets/prime logo-1.png" alt="Logo">
+      <span>Prime Fitness</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Facilities</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="cycling.html">Cycling</a></li>
+            <li><a class="dropdown-item" href="swimming.html">Swimming</a></li>
+            <li><a class="dropdown-item" href="sports.html">Sports & Fitness</a></li>
+            <li><a class="dropdown-item" href="group.html">Group Exercises</a></li>
+            <li><a class="dropdown-item" href="equipments.html">Gym Equipments</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">About</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="faqs.html">FAQ’s</a></li>
+            <li><a class="dropdown-item" href="contact.html">Enquiry Form</a></li>
+            <li><a class="dropdown-item" href="site-map.html">Site Map</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="membership.html">Membership</a></li>
+        <li class="nav-item"><a class="nav-link" href="salon.html">Salon & Spa</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Carousel -->
+<div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="assets/carousal--img-1.jpg" alt="...">
+      <div class="carousel-caption">
+        <h1>Welcome to Prime Fitness Club</h1>
+        <p>Your trusted partner in health and fitness since 1982.</p>
+        <a href="contact.html#contact" class="btn btn-animated">Join Now →</a>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="assets/carousal-img-2.jpg" alt="...">
+      <div class="carousel-caption">
+        <h1>Transform Your Body</h1>
+        <p>Modern facilities and expert trainers for every fitness level.</p>
+        <a href="membership.html" class="btn btn-animated">Get Membership</a>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="assets/carousal-img-3.jpg" alt="...">
+      <div class="carousel-caption">
+        <h1>Join the Community</h1>
+        <p>Experience strength, health, and lifelong wellness with us.</p>
+        <a href="gallery.html" class="btn btn-animated">View Gallery</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- About Us -->
+<section id="about" class="container my-5">
+  <div class="about-section row g-0 align-items-stretch">
+    <div class="col-lg-6 about-img" style="background-image:url('assets/about.jpg');"></div>
+    <div class="col-lg-6 about-content">
+      <h2>About Us</h2>
+      <p><span style="color:#97d925;">Since 1982,</span> Prime Fitness has been more than a gym — we’re a community. With world-class trainers, modern equipment, and a supportive environment, we help members unlock their full potential.</p>
+      <p>Our mission is simple: keep you motivated, strong, and healthy — for life.</p>
+      <div class="about-icons">
+        <div><i class="bi bi-heart-pulse"></i><p>Wellness First</p></div>
+        <div><i class="bi bi-people"></i><p>Community</p></div>
+        <div><i class="bi bi-lightning-charge"></i><p>Performance</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="container-fluid mt-5">
+  <div class="container">
+    <div class="row text-white">
+      <!-- Logo & tagline -->
+      <div>
+        <div class="d-flex align-items-center">
+          <img src="assets/prime logo-1.png" alt="Logo" class="footer-logo me-2">
+          <span class="footer-title">Prime Fitness</span>
+        </div>
+        <p class="footer-tagline"><span>Empowering healthier lives</span><span>since 1982.</span></p>
+      </div>
+      <!-- Explore -->
+      <div>
+        <h5>Explore</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">About Us</a></li>
+          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
         </ul>
       </div>
-    </div>
-  </nav>
-
-  <!-- Home Section -->
-  <section id="home" class="text-center">
-    <div class="container my-5">
-      <h1 class="display-4 fw-bold mt-4 glow-text"> Welcome to Prime Fitness Club</h1>
-      <hr>
-      <p class="lead mx-auto mt-4" style="max-width:800px;">
-        Since <span style="color: rgb(151, 217, 37); font-weight: 500;">1982</span>, 
-        we’ve been your trusted partner in 
-        <span style="color: rgb(151, 217, 37);">health and fitness excellence</span> — 
-        empowering individuals with modern facilities, expert guidance, 
-        and a commitment to <span style="color: rgb(151, 217, 37);">lifelong wellness</span>.
-      </p>
-      <a href="contact.html#contact" class="btn btn-animated fw-bold px-4 py-2 mt-4">Join Now →</a>
-    </div>
-
-    <!-- Carousel -->
-    <div
-      id="carouselExample"
-      class="carousel slide"
-      data-bs-ride="carousel"
-      data-bs-interval="3000"
-    >
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="assets/carousal--img-1.jpg" alt="..." />
-          <div class="carousel-caption">
-            <h1>Welcome to Prime Fitness Club</h1>
-            <p>Your trusted partner in health and fitness since 1982.</p>
-            <a href="contact.html" class="btn btn-animated"
-              >Join Now →</a
-            >
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="assets/carousal-img-2.jpg" alt="..." />
-          <div class="carousel-caption">
-            <h1>Transform Your Body</h1>
-            <p>
-              Modern facilities and expert trainers for every fitness level.
-            </p>
-            <a href="membership.html" class="btn btn-animated"
-              >Get Membership</a
-            >
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="assets/carousal-img-3.jpg" alt="..." />
-          <div class="carousel-caption">
-            <h1>Join the Community</h1>
-            <p>Experience strength, health, and lifelong wellness with us.</p>
-            <a href="gallery.html" class="btn btn-animated">View Gallery</a>
-          </div>
+      <!-- Facilities -->
+      <div>
+        <h5>Facilities</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item"><a href="cycling.html" class="nav-link">Cycling</a></li>
+          <li class="nav-item"><a href="swimming.html" class="nav-link">Swimming</a></li>
+          <li class="nav-item"><a href="sports.html" class="nav-link">Sports & Fitness</a></li>
+          <li class="nav-item"><a href="equipments.html" class="nav-link">Gym Equipments</a></li>
+          <li class="nav-item"><a href="group.html" class="nav-link">Group Exercises</a></li>
+        </ul>
+      </div>
+      <!-- Quick Links -->
+      <div>
+        <h5>Quick Links</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item"><a href="membership.html" class="nav-link">Membership</a></li>
+          <li class="nav-item"><a href="salon.html" class="nav-link">Salon & Spa</a></li>
+          <li class="nav-item"><a href="faqs.html" class="nav-link">FAQ's</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
+          <li class="nav-item"><a href="site-map.html" class="nav-link">Site Map</a></li>
+        </ul>
+      </div>
+      <!-- Follow Us -->
+      <div>
+        <h5>Follow Us</h5>
+        <p class="small text-white">Stay connected and join our fitness community online.</p>
+        <div class="d-flex social-icons">
+          <a href="#" class="fs-4 me-3"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="fs-4 me-3"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="fs-4"><i class="bi bi-youtube"></i></a>
         </div>
       </div>
     </div>
+    <div class="footer-bottom">
+      © 2025 Prime Fitness Club — All rights reserved
+    </div>
+  </div>
+</footer>
 
-    <!-- About Us -->
-    <section id="about" class="container my-5">
-      <div class="about-section row g-0 align-items-stretch">
-        <div
-          class="col-lg-6 about-img"
-          style="background-image: url('assets/about.jpg')"
-        ></div>
-        <div class="col-lg-6 about-content">
-          <h2>About Us</h2>
-          <p>
-            <span style="color: #97d925">Since 1982,</span> Prime Fitness has
-            been more than a gym — we’re a community. With world-class trainers,
-            modern equipment, and a supportive environment, we help members
-            unlock their full potential.
-          </p>
-          <p>
-            Our mission is simple: keep you motivated, strong, and healthy — for
-            life.
-          </p>
-          <div class="about-icons">
-            <div>
-              <i class="bi bi-heart-pulse"></i>
-              <p>Wellness First</p>
-            </div>
-            <div>
-              <i class="bi bi-people"></i>
-              <p>Community</p>
-            </div>
-            <div>
-              <i class="bi bi-lightning-charge"></i>
-              <p>Performance</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="container-fluid mt-5">
-      <div class="container">
-        <div class="row text-white">
-          <!-- Logo & tagline -->
-          <div>
-            <div class="d-flex align-items-center">
-              <img
-                src="assets/prime logo-1.png"
-                alt="Logo"
-                class="footer-logo me-2"
-              />
-              <span class="footer-title">Prime Fitness</span>
-            </div>
-            <p class="footer-tagline">
-              <span>Empowering healthier lives</span><span>since 1982.</span>
-            </p>
-          </div>
-          <!-- Explore -->
-          <div>
-            <h5>Explore</h5>
-            <ul class="nav flex-column">
-              <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
-              <li class="nav-item">
-                <a href="index.html#about" class="nav-link">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a href="gallery.html" class="nav-link">Gallery</a>
-              </li>
-            </ul>
-          </div>
-          <!-- Facilities -->
-          <div>
-            <h5>Facilities</h5>
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a href="cycling.html" class="nav-link">Cycling</a>
-              </li>
-              <li class="nav-item">
-                <a href="swimming.html" class="nav-link">Swimming</a>
-              </li>
-              <li class="nav-item">
-                <a href="sports.html" class="nav-link">Sports & Fitness</a>
-              </li>
-              <li class="nav-item">
-                <a href="equipments.html" class="nav-link">Gym Equipments</a>
-              </li>
-              <li class="nav-item">
-                <a href="group.html" class="nav-link">Group Exercises</a>
-              </li>
-            </ul>
-          </div>
-          <!-- Quick Links -->
-          <div>
-            <h5>Quick Links</h5>
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a href="membership.html" class="nav-link">Membership</a>
-              </li>
-              <li class="nav-item">
-                <a href="salon.html" class="nav-link">Salon & Spa</a>
-              </li>
-              <li class="nav-item">
-                <a href="faqs.html" class="nav-link">FAQ's</a>
-              </li>
-              <li class="nav-item">
-                <a href="contact.html" class="nav-link">Contact Us</a>
-              </li>
-              <li class="nav-item">
-                <a href="site-map.html" class="nav-link">Site Map</a>
-              </li>
-            </ul>
-          </div>
-          <!-- Follow Us -->
-          <div>
-            <h5>Follow Us</h5>
-            <p class="small text-white">
-              Stay connected and join our fitness community online.
-            </p>
-            <div class="d-flex social-icons">
-              <a href="https://www.facebook.com/share/1FRNyacGdV/" class="fs-4 me-3"><i class="bi bi-facebook"></i></a>
-              <a href="https://www.instagram.com/primefitnesspakistan?igsh=bmpxN3R3dzRsYmg=" class="fs-4 me-3"><i class="bi bi-instagram"></i></a>
-              <a href="https://www.youtube.com/c/PrimeFitnessusa" class="fs-4"><i class="bi bi-youtube"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          © 2025 Prime Fitness Club — All rights reserved
-        </div>
-      </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      const carousel = document.querySelector("#carouselExample");
-      carousel.addEventListener("click", () => {
-        const bsCarousel =
-          bootstrap.Carousel.getInstance(carousel) ||
-          new bootstrap.Carousel(carousel);
-        bsCarousel.next();
-      });
-    </script>
-  </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const carousel = document.querySelector('#carouselExample');
+  carousel.addEventListener('click', () => {
+    const bsCarousel = bootstrap.Carousel.getInstance(carousel) || new bootstrap.Carousel(carousel);
+    bsCarousel.next();
+  });
+</script>
+</body>
 </html>

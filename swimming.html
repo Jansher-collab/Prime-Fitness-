@@ -12,10 +12,6 @@
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
   <style>
-
-
-
-
   body {
     background: #000;
     color: #fff;
@@ -225,6 +221,17 @@ footer .footer-logo {
     grid-template-columns: repeat(5, 1fr);
     gap: 30px;
     text-align: left;
+  }
+}
+/* Super small screens: 250px - 320px, center social icons */
+@media (max-width:320px) {
+  footer .row { 
+    display: block; 
+    text-align: center; 
+  }
+  footer .social-icons { 
+    justify-content: center !important; 
+    margin-top: 10px; 
   }
 }
 .footer-bottom {

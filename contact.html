@@ -552,6 +552,68 @@ footer .footer-logo {
       });
     };
   </script>
+  <script>
+(function(){
+  'use strict';
+  document.addEventListener('DOMContentLoaded', function(){
+    const redirectTo = 'index.html'; // change only if your home file has a different name
+
+    document.querySelectorAll('form').forEach(form => {
+      form.addEventListener('submit', function(e) {
+        // prevent multiple submits/handlers
+        if (form._redirectScheduled) return;
+        form._redirectScheduled = true;
+
+        const doRedirect = () => {
+          setTimeout(() => { window.location.href = redirectTo; }, 2000);
+        };
+
+        // If you want the form to perform a normal submit/navigation instead of this JS flow,
+        // add data-allow-default="true" to the <form> element. (Optional)
+        if (form.hasAttribute('data-allow-default')) {
+          doRedirect();
+          return; // allow default submission to continue
+        }
+
+        const action = (form.getAttribute('action') || '').trim();
+        const method = (form.getAttribute('method') || 'GET').toUpperCase();
+
+        // If no action (or action="#"), just prevent default and redirect after 2s
+        if (!action || action === '#') {
+          e.preventDefault();
+          doRedirect();
+          return;
+        }
+
+        // Try to submit using fetch so we can stay on the page, then redirect.
+        // (This works best when the action allows CORS or is same-origin.
+        //  If fetch fails we still redirect after 2s.)
+        e.preventDefault();
+
+        try {
+          const formData = new FormData(form);
+
+          if (method === 'GET') {
+            const params = new URLSearchParams(formData).toString();
+            const url = action + (action.includes('?') ? '&' : '?') + params;
+            fetch(url, { method: 'GET', credentials: 'same-origin' })
+              .catch(()=>{})
+              .finally(()=> doRedirect());
+          } else {
+            fetch(action, { method: method, body: formData, credentials: 'same-origin' })
+              .catch(()=>{})
+              .finally(()=> doRedirect());
+          }
+        } catch (err) {
+          // fallback: just redirect
+          doRedirect();
+        }
+      }, { passive: false });
+    });
+  });
+})();
+</script>
+
 </body>
 
 </html>
